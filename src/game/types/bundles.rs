@@ -1,6 +1,6 @@
 // Custom Bundles to make creating specific kinds of objects easier
-use bevy::{prelude::*};
 use super::components::*;
+use bevy::prelude::*;
 
 #[derive(Bundle, Default, Clone)]
 pub struct PlayerBundle
@@ -16,7 +16,7 @@ pub struct ShipBundle
     #[bundle]
     pub object_bundle: ObjectBundle,
     pub acceleration: Acceleration,
-    pub thrust: Thrust
+    pub thrust: Thrust,
 }
 
 #[derive(Bundle, Default, Clone)]
@@ -24,5 +24,5 @@ pub struct ObjectBundle
 {
     #[bundle]
     pub sprite_bundle: SpriteBundle,
-    pub velocity: Velocity
+    pub velocity: Velocity,
 }

@@ -1,11 +1,17 @@
-use bevy::{prelude::*, app::*};
+use bevy::{app::*, prelude::*};
 
-pub struct UiPluginGroup;
+mod splashscreen;
+use splashscreen::SplashScreenPlugin;
 
-impl PluginGroup for UiPluginGroup
+mod mainmenu;
+use mainmenu::MainMenuPlugin;
+
+pub struct UiPlugins;
+
+impl PluginGroup for UiPlugins
 {
-    fn build(&mut self, group: &mut PluginBuilder)
+    fn build(&mut self, group: &mut PluginGroupBuilder)
     {
-        group;
+        group.add(SplashScreenPlugin).add(MainMenuPlugin);
     }
 }

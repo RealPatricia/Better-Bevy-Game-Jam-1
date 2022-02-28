@@ -2,7 +2,7 @@
  All the primative types
 */
 
-use bevy::{prelude::*, math::Vec2};
+use bevy::{math::Vec2, prelude::*};
 
 #[derive(Component, Default, Clone, Copy)]
 pub struct Velocity(pub Vec2);

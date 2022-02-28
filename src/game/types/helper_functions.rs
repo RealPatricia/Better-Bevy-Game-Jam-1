@@ -7,8 +7,7 @@ pub fn bool_to_input_direction(up: bool, down: bool, left: bool, right: bool) ->
 
     let mut direction = Vec2::new(horizontal, vertical);
 
-    if direction != Vec2::ZERO
-    {
+    if direction != Vec2::ZERO {
         direction = direction.normalize();
     }
 
