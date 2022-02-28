@@ -9,6 +9,9 @@ use player::PlayerPlugin;
 
 mod camera;
 use camera::CameraPlugin;
+
+mod movement;
+use movement::MovementPlugin;
 pub struct GamePlugins;
 
 impl PluginGroup for GamePlugins
@@ -18,6 +21,7 @@ impl PluginGroup for GamePlugins
         group
             .add(ResourcePlugin)
             .add(PlayerPlugin)
-            .add(CameraPlugin);
+            .add(CameraPlugin)
+            .add(MovementPlugin);
     }
 }

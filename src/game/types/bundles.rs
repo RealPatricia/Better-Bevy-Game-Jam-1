@@ -7,7 +7,7 @@ pub struct PlayerBundle
 {
     #[bundle]
     pub ship_bundle: ShipBundle,
-    pub player_tag: PlayerTag
+    pub player_tag: PlayerTag,
 }
 
 #[derive(Bundle, Default, Clone)]
@@ -15,7 +15,8 @@ pub struct ShipBundle
 {
     #[bundle]
     pub object_bundle: ObjectBundle,
-    pub acceleration: Acceleration
+    pub acceleration: Acceleration,
+    pub thrust: Thrust
 }
 
 #[derive(Bundle, Default, Clone)]
