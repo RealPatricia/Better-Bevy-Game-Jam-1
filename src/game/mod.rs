@@ -1,7 +1,7 @@
 // Import app for the PluginGroupBuilder
 use bevy::{app::*, prelude::*};
 
-pub mod ui;
+pub mod gamestates;
 
 mod types;
 use types::ResourcePlugin;

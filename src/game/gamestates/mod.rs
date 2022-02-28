@@ -1,4 +1,4 @@
-use bevy::{app::*, prelude::*};
+use bevy::{app::*};
 
 mod splashscreen;
 use splashscreen::SplashScreenPlugin;
@@ -9,9 +9,9 @@ use mainmenu::MainMenuPlugin;
 mod gameplay;
 use gameplay::GamePlayPlugin;
 
-pub struct UiPlugins;
+pub struct GameStatePlugins;
 
-impl PluginGroup for UiPlugins
+impl PluginGroup for GameStatePlugins
 {
     fn build(&mut self, group: &mut PluginGroupBuilder)
     {

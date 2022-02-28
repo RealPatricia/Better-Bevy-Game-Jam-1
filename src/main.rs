@@ -17,17 +17,17 @@ code into a single PluginGroup to make everything prettier.
 */
 mod game;
 
-use game::{ui::UiPlugins, GamePlugins};
+use game::{gamestates::GameStatePlugins, GamePlugins};
 
 fn main()
 {
-    // You can thank C# for the drop brace btw. I know I do.
+    // You can thank C# (and rustfmt) for the drop brace btw. I know I do.
 
     // Setting up the app with the default plugins and our game plugins
 
     App::new()
         .add_plugins(DefaultPlugins)
         .add_plugins(GamePlugins)
-        .add_plugins(UiPlugins)
+        .add_plugins(GameStatePlugins)
         .run();
 }
