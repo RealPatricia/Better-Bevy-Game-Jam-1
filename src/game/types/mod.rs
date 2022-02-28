@@ -1,11 +1,11 @@
 // This module is just here to organize all of the game types, had a really bad problem with it, so hopefully this helps with the issue
-mod primatives;
+mod components;
 mod bundles;
 
 use bevy::prelude::*;
 use resources::*;
 use prefabs::*;
-use primatives::*;
+use components::*;
 use bundles::*;
 
 pub struct ResourcePlugin;
