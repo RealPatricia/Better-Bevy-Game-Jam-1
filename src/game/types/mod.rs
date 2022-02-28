@@ -18,7 +18,9 @@ impl Plugin for ResourcePlugin
         app
             .insert_resource(ArenaSize { width: 1000.0, height: 1000.0})
  
-            .insert_resource(DebugTimer(Timer::from_seconds(1.0, true)));
+            .insert_resource(DebugTimer(Timer::from_seconds(1.0, true)))
+            .add_state(GameState::SplashScreen)
+            .insert_resource(DebugTimer(Timer::from_seconds(5.0, false)));
     }
 }
 
@@ -28,6 +30,18 @@ pub mod resources
 
     pub struct ArenaSize { pub width: f32, pub height: f32 }
     pub struct DebugTimer(pub Timer);
+
+    #[derive(Debug, Clone, PartialEq, Eq, Hash)]
+    pub enum GameState
+    {
+        SplashScreen,
+        MainMenu,
+        GameSettings,
+        ShipSettings,
+        ChapterSelect,
+        GamePlay,
+        PauseMenu,
+    }
 }
 
 pub mod prefabs
