@@ -15,3 +15,9 @@ pub struct PlayerTag(pub i8);
 
 #[derive(Component, Default, Clone, Copy)]
 pub struct Thrust(pub f32);
+
+#[derive(Component, Default, Clone, Copy)]
+pub struct MainMenuUI;
+
+#[derive(Component, Default, Clone, Copy)]
+pub struct PauseMenuUI;

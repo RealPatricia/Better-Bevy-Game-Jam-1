@@ -25,15 +25,8 @@ impl Plugin for PlayerPlugin
             },
             ..Default::default()
         }))
-        .add_system_set(SystemSet::on_enter(AppState::GamePlay).with_system(player_setup))
         .add_system_set(SystemSet::on_update(AppState::GamePlay).with_system(player_accelerate));
     }
-}
-
-fn player_setup(mut commands: Commands, player_prefab: Res<PlayerPrefab>)
-{
-    let player = player_prefab.0.clone();
-    commands.spawn_bundle(player);
 }
 
 fn player_accelerate(

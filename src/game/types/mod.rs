@@ -19,10 +19,8 @@ impl Plugin for ResourcePlugin
             width: 1000.0,
             height: 1000.0,
         })
-        .insert_resource(DebugTimer(Timer::from_seconds(1.0, true)))
-        .insert_resource(ClearColor(Color::CYAN))
-        .add_state(AppState::SplashScreen)
-        .insert_resource(DebugTimer(Timer::from_seconds(5.0, false)));
+        .insert_resource(DebugTimer(Timer::from_seconds(3.0, true)))
+        .add_state(AppState::SplashScreen);
     }
 }
 
