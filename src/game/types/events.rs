@@ -1,5 +1,4 @@
-use bevy::prelude::*;
-use super::{components::*, resources::*};
+use super::{resources::*};
 
 pub struct StateChangeEvent(pub AppState);
 pub struct StatePushEvent(pub AppState);

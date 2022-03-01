@@ -13,6 +13,15 @@ use gameplay::GamePlayPlugin;
 mod pausemenu;
 use pausemenu::PauseMenuPlugin;
 
+mod gamesettings;
+use gamesettings::GameSettingsPlugin;
+
+mod shipsettings;
+use shipsettings::ShipSettingsPlugin;
+
+mod chapterselect;
+use chapterselect::ChapterSelectPlugin;
+
 pub struct GameStatePlugins;
 
 impl PluginGroup for GameStatePlugins
@@ -24,7 +33,10 @@ impl PluginGroup for GameStatePlugins
             .add(SplashScreenPlugin)
             .add(MainMenuPlugin)
             .add(GamePlayPlugin)
-            .add(PauseMenuPlugin);
+            .add(PauseMenuPlugin)
+            .add(ChapterSelectPlugin)
+            .add(ShipSettingsPlugin)
+            .add(GameSettingsPlugin);
     }
 }
 
