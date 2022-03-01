@@ -1,5 +1,5 @@
 // Import app for the PluginGroupBuilder
-use bevy::{app::*, prelude::*};
+use bevy::{app::*};
 
 pub mod gamestates;
 

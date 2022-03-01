@@ -2,12 +2,11 @@
 pub mod bundles;
 pub mod components;
 pub mod helper_functions;
+pub mod events;
 
 use bevy::prelude::*;
-use bundles::*;
-use components::*;
-use prefabs::*;
 use resources::*;
+use events::*;
 
 pub struct ResourcePlugin;
 
@@ -20,7 +19,11 @@ impl Plugin for ResourcePlugin
             height: 1000.0,
         })
         .insert_resource(DebugTimer(Timer::from_seconds(3.0, true)))
-        .add_state(AppState::SplashScreen);
+        .insert_resource(CanUnpause(false))
+        .add_state(AppState::SplashScreen)
+        .add_event::<StateChangeEvent>()
+        .add_event::<StatePushEvent>()
+        .add_event::<StatePopEvent>();
     }
 }
 
@@ -35,10 +38,11 @@ pub mod resources
     }
     pub struct DebugTimer(pub Timer);
 
-    #[derive(Debug, Clone, PartialEq, Eq, Hash)]
+    #[derive(Debug, Default, Copy, Clone, PartialEq, Eq, Hash)]
     pub enum AppState
     {
         SplashScreen,
+        #[default]
         MainMenu,
         GameSettings,
         ShipSettings,
@@ -46,6 +50,10 @@ pub mod resources
         GamePlay,
         PauseMenu,
     }
+
+    pub struct CanUnpause(pub bool);
+
+    pub struct EscToMain(pub bool);
 }
 
 pub mod prefabs
@@ -53,22 +61,4 @@ pub mod prefabs
     use super::bundles::PlayerBundle;
 
     pub struct PlayerPrefab(pub PlayerBundle);
-}
-
-#[allow(dead_code)]
-fn player_camera_report(
-    time: Res<Time>,
-    mut timer: ResMut<DebugTimer>,
-    cam_query: Query<&Transform, With<Camera>>,
-    player_query: Query<&Transform, With<PlayerTag>>,
-)
-{
-    if timer.0.tick(time.delta()).just_finished() {
-        for trans in cam_query.iter() {
-            println!("Camera position: {}", trans.translation);
-        }
-        for trans in player_query.iter() {
-            println!("Player position: {}", trans.translation);
-        }
-    }
 }

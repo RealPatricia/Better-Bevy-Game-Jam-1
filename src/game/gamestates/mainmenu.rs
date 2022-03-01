@@ -1,4 +1,4 @@
-use super::super::types::{resources::*, components::*};
+use super::super::types::{resources::*, components::*, events::*};
 use bevy::prelude::*;
 
 pub struct MainMenuPlugin;
@@ -9,13 +9,15 @@ impl Plugin for MainMenuPlugin
     {
         app.add_system_set(SystemSet::on_enter(AppState::MainMenu).with_system(main_menu_setup))
             .add_system_set(SystemSet::on_update(AppState::MainMenu).with_system(test))
-            .add_system_set(SystemSet::on_exit(AppState::MainMenu).with_system(main_menu_cleanup));
+            .add_system_set(SystemSet::on_exit(AppState::MainMenu).with_system(main_menu_cleanup))
+            .add_system_set(SystemSet::on_resume(AppState::MainMenu).with_system(main_menu_setup))
+            .add_system_set(SystemSet::on_pause(AppState::MainMenu).with_system(main_menu_cleanup));
     }
 }
 
 fn main_menu_setup(mut commands: Commands)
 {
-    commands.insert_resource(ClearColor(Color::BLACK));
+    commands.insert_resource(ClearColor(Color::GREEN));
     commands.spawn_bundle(UiCameraBundle::default());
 
     commands.spawn_bundle(NodeBundle
@@ -51,13 +53,12 @@ fn main_menu_setup(mut commands: Commands)
 fn test(
     time: Res<Time>,
     mut timer: ResMut<DebugTimer>,
-    mut app_state: ResMut<State<AppState>>
+    mut sc_event: EventWriter<StatePushEvent>
 )
 {
     if timer.0.tick(time.delta()).just_finished()
     {
-
-        app_state.set(AppState::GamePlay).unwrap();
+        sc_event.send(StatePushEvent(AppState::GamePlay));
     }
 }
 

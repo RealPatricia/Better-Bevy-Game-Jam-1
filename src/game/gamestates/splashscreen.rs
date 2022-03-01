@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use super::super::types::resources::*;
+use super::super::types::{resources::*, events::*};
 
 pub struct SplashScreenPlugin;
 
@@ -17,11 +17,11 @@ impl Plugin for SplashScreenPlugin
 fn temp_splash_screen(
     mut timer: ResMut<DebugTimer>,
     time: Res<Time>,
-    mut app_state: ResMut<State<AppState>>,
+    mut sc_event: EventWriter<StateChangeEvent>
 )
 {
     if timer.0.tick(time.delta()).finished() {
-        app_state.set(AppState::MainMenu).unwrap();
+        sc_event.send(StateChangeEvent(AppState::MainMenu));
     }
 }
 

@@ -3,6 +3,7 @@
 */
 
 use bevy::{math::Vec2, prelude::*};
+use super::resources::*;
 
 #[derive(Component, Default, Clone, Copy)]
 pub struct Velocity(pub Vec2);
@@ -21,3 +22,6 @@ pub struct MainMenuUI;
 
 #[derive(Component, Default, Clone, Copy)]
 pub struct PauseMenuUI;
+
+#[derive(Component, Default, Clone, Copy)]
+pub struct ButtonStageTrigger(pub AppState);
